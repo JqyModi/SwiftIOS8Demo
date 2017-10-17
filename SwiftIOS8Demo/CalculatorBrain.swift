@@ -64,15 +64,16 @@ class CalculatorBrain {
     }
     
     //将操作数压栈
-    func pushOperand(operand: Double){
+    func pushOperand(operand: Double) -> Double? {
         opStack.append(Op.Operand(operand))
+        return evaluate()
     }
     
-    func performOperation(symbol: String) {
+    func performOperation(symbol: String) -> Double? {
         //如果已存在该算法则入栈
         if let operation = knownOps[symbol] {
             opStack.append(operation)
         }
-        
+        return evaluate()
     }
 }
